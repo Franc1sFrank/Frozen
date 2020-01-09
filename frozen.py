@@ -80,3 +80,12 @@ def substep():
     v[p], C[p] = new_v, new_C
     x[p] += dt * v[p] # advection
 
+import random
+group_size = n_particles // 3
+for i in range(n_particles):
+  x[i] = [random.random() * 0.2 + 0.3 + 0.10 * (i // group_size), random.random() * 0.2 + 0.05 + 0.32 * (i // group_size)]
+  material[i] = i // group_size # 0: fluid 1: jelly 2: snow
+  v[i] = [0, 0]
+  F[i] = [[1, 0], [0, 1]]
+  Jp[i] = 1
+
