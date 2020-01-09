@@ -89,3 +89,11 @@ for i in range(n_particles):
   F[i] = [[1, 0], [0, 1]]
   Jp[i] = 1
 
+import numpy as np
+gui = ti.GUI("Taichi MLS-MPM-99", res=512, background_color=0x112F41)
+for frame in range(20000):
+  for s in range(int(2e-3 // dt)):
+    substep()
+  colors = np.array([0x068587, 0xED553B, 0xEEEEF0], dtype=np.uint32)
+  gui.circles(x.to_numpy(), radius=1.5, color=colors[material.to_numpy()])
+  gui.show() # Change to gui.show(f'{frame:06d}.png') to write images to disk
